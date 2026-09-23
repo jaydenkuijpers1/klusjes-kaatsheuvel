@@ -54,45 +54,47 @@
             font-weight: bold;
             color: #2e7d32;
         }
-.form-box {
-    background: #f1f8e9;
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 25px;
-}
 
-.form-box input,
-.form-box select,
-.form-box textarea {
-    width: 90%;
-    padding: 14px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
+        .form-box {
+            background: #f1f8e9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
 
-.form-box textarea {
-    height: 100px;
-    resize: vertical;
-}
+        .form-box input,
+        .form-box select,
+        .form-box textarea {
+            width: 90%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
 
-.form-box button {
-    margin-top: 15px;
-    padding: 15px 25px;
-    background: #2e7d32;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .form-box textarea {
+            height: 100px;
+            resize: vertical;
+        }
 
-.form-box button:hover {
-    background: #1b5e20;
-}
+        .form-box button {
+            margin-top: 15px;
+            padding: 15px 25px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .form-box button:hover {
+            background: #1b5e20;
+        }
+
         .contact-button {
             display: inline-block;
             margin-top: 20px;
@@ -145,6 +147,25 @@
             </p>
         </div>
 
+        <!-- OVER MIJ -->
+
+        <div class="service">
+            <h2>👋 Over mij</h2>
+
+            <p>
+                Hoi! Ik ben Jayden, ik ben 14 jaar oud en ik hou erg van honden.
+                Ik vind het leuk om mensen in mijn omgeving te helpen met kleine klusjes.
+            </p>
+
+            <h2>⭐ Wat kun je van mij verwachten?</h2>
+
+            <p>
+                Je kunt van mij verwachten dat ik netjes, vriendelijk en betrouwbaar
+                te werk ga. Ik doe mijn best om iedere klus goed uit te voeren en
+                ga zorgvuldig met jouw spullen en huisdier om.
+            </p>
+        </div>
+
         <h2>💶 Prijs</h2>
 
         <p class="price">
@@ -165,61 +186,65 @@
         </div>
 
         <h2>📞 Contact</h2>
-<div class="form-box">
 
-    <h2>📝 Aanvraagformulier</h2>
+        <div class="form-box">
 
-   <input type="text" id="naam" placeholder="Naam" required>
+            <h2>📝 Aanvraagformulier</h2>
 
-<input type="tel" id="telefoon" placeholder="Telefoonnummer" required>
+            <input type="text" id="naam" placeholder="Naam" required>
 
-<input type="text" id="hond" placeholder="Naam van je hond" required>
+            <input type="tel" id="telefoon" placeholder="Telefoonnummer" required>
 
-<input type="text" id="datum" placeholder="Datum" onfocus="this.type='date'" required>
-    <select id="tijd" required>
-        <option value="">Kies een tijd</option>
-        <option value="16:00 - 17:00">16:00 - 17:00</option>
-        <option value="19:30 - 21:00">19:30 - 21:00</option>
-    </select>
+            <input type="text" id="hond" placeholder="Naam van je hond" required>
 
-    <textarea id="bericht" placeholder="Extra informatie"></textarea>
+            <input type="text" id="datum" placeholder="Datum"
+                   onfocus="this.type='date'" required>
 
-    <button type="button" onclick="sendWhatsApp()">
-        💬 Aanvraag via WhatsApp
-    </button>
+            <select id="tijd" required>
+                <option value="">Kies een tijd</option>
+                <option value="16:00 - 17:00">16:00 - 17:00</option>
+                <option value="19:30 - 21:00">19:30 - 21:00</option>
+            </select>
 
-</div>
+            <textarea id="bericht" placeholder="Extra informatie"></textarea>
 
-<script>
-function sendWhatsApp() {
+            <button type="button" onclick="sendWhatsApp()">
+                💬 Aanvraag via WhatsApp
+            </button>
 
-    const naam = document.getElementById("naam").value;
-    const hond = document.getElementById("hond").value;
-    const datum = document.getElementById("datum").value;
-    const tijd = document.getElementById("tijd").value;
-    const bericht = document.getElementById("bericht").value;
+        </div>
 
-    if (!naam || !hond || !datum || !tijd) {
-        alert("Vul eerst alle verplichte velden in.");
-        return;
-    }
+        <script>
+            function sendWhatsApp() {
 
-    const telefoonnummer = "31619853623";
+                const naam = document.getElementById("naam").value;
+                const hond = document.getElementById("hond").value;
+                const datum = document.getElementById("datum").value;
+                const tijd = document.getElementById("tijd").value;
+                const bericht = document.getElementById("bericht").value;
 
-    const tekst =
-        "🐶 Nieuwe hondenuitlaat aanvraag%0A%0A" +
-        "👤 Naam: " + encodeURIComponent(naam) + "%0A" +
-        "🐕 Hond: " + encodeURIComponent(hond) + "%0A" +
-        "📅 Datum: " + encodeURIComponent(datum) + "%0A" +
-        "🕐 Tijd: " + encodeURIComponent(tijd) + "%0A" +
-        "📝 Extra informatie: " + encodeURIComponent(bericht);
+                if (!naam || !hond || !datum || !tijd) {
+                    alert("Vul eerst alle verplichte velden in.");
+                    return;
+                }
 
-    window.open(
-        "https://wa.me/" + telefoonnummer + "?text=" + tekst,
-        "_blank"
-    );
-}
-</script>
+                const telefoonnummer = "31619853623";
+
+                const tekst =
+                    "🐶 Nieuwe hondenuitlaat aanvraag%0A%0A" +
+                    "👤 Naam: " + encodeURIComponent(naam) + "%0A" +
+                    "🐕 Hond: " + encodeURIComponent(hond) + "%0A" +
+                    "📅 Datum: " + encodeURIComponent(datum) + "%0A" +
+                    "🕐 Tijd: " + encodeURIComponent(tijd) + "%0A" +
+                    "📝 Extra informatie: " + encodeURIComponent(bericht);
+
+                window.open(
+                    "https://wa.me/" + telefoonnummer + "?text=" + tekst,
+                    "_blank"
+                );
+            }
+        </script>
+
         <p>
             Interesse of vragen?
         </p>
@@ -227,9 +252,11 @@ function sendWhatsApp() {
         <a class="contact-button" href="tel:0619853623">
             📞 Bel ons
         </a>
- <a class="contact-button" href="https://wa.me/0619853623">
-    💬 WhatsApp ons
-</a>
+
+        <a class="contact-button" href="https://wa.me/0619853623">
+            💬 WhatsApp ons
+        </a>
+
         <p class="footer">
             📍 Kaatsheuvel
         </p>
