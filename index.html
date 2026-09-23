@@ -37,6 +37,10 @@
             margin-top: 35px;
         }
 
+        h3 {
+            color: #333;
+        }
+
         p {
             font-size: 20px;
             color: #444;
@@ -165,6 +169,22 @@
             font-size: 18px;
         }
 
+        .delete-button {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .delete-button:hover {
+            background: #b71c1c;
+        }
+
         #reviewsContainer {
             display: none;
         }
@@ -213,11 +233,13 @@
         <!-- SERVICE -->
 
         <div class="service">
+
             <h2>🐕 Mijn service</h2>
 
             <p>
                 Honden uitlaten in Kaatsheuvel.
             </p>
+
         </div>
 
 
@@ -278,11 +300,26 @@
 
             <h2>📝 Aanvraagformulier</h2>
 
-            <input type="text" id="naam" placeholder="Naam" required>
+            <input
+                type="text"
+                id="naam"
+                placeholder="Naam"
+                required
+            >
 
-            <input type="tel" id="telefoon" placeholder="Telefoonnummer" required>
+            <input
+                type="tel"
+                id="telefoon"
+                placeholder="Telefoonnummer"
+                required
+            >
 
-            <input type="text" id="hond" placeholder="Naam van je hond" required>
+            <input
+                type="text"
+                id="hond"
+                placeholder="Naam van je hond"
+                required
+            >
 
             <input
                 type="text"
@@ -352,11 +389,35 @@
 
             <div class="stars">
 
-                <span class="star" onclick="selectStar(1)">★</span>
-                <span class="star" onclick="selectStar(2)">★</span>
-                <span class="star" onclick="selectStar(3)">★</span>
-                <span class="star" onclick="selectStar(4)">★</span>
-                <span class="star" onclick="selectStar(5)">★</span>
+                <span
+                    class="star"
+                    onclick="selectStar(1)">
+                    ★
+                </span>
+
+                <span
+                    class="star"
+                    onclick="selectStar(2)">
+                    ★
+                </span>
+
+                <span
+                    class="star"
+                    onclick="selectStar(3)">
+                    ★
+                </span>
+
+                <span
+                    class="star"
+                    onclick="selectStar(4)">
+                    ★
+                </span>
+
+                <span
+                    class="star"
+                    onclick="selectStar(5)">
+                    ★
+                </span>
 
             </div>
 
@@ -398,7 +459,7 @@
         </div>
 
 
-        <!-- TELEFOON / WHATSAPP -->
+        <!-- CONTACT KNOPPEN -->
 
         <p>
             Interesse of vragen?
@@ -496,286 +557,5 @@
                 telefoonnummer +
                 "?text=" +
                 tekst,
-
-                "_blank"
-            );
-        }
-
-
-
-        /* =========================
-           REVIEWS
-        ========================= */
-
-        let selectedStars = 0;
-
-
-        function selectStar(number) {
-
-            selectedStars = number;
-
-            const stars =
-                document.querySelectorAll(".star");
-
-
-            stars.forEach(
-                (star, index) => {
-
-                    if (index < number) {
-
-                        star.classList.add(
-                            "selected"
-                        );
-
-                    } else {
-
-                        star.classList.remove(
-                            "selected"
-                        );
-
-                    }
-
-                }
-            );
-        }
-
-
-
-        function addReview() {
-
-            const name =
-                document.getElementById(
-                    "reviewName"
-                ).value.trim();
-
-
-            const text =
-                document.getElementById(
-                    "reviewText"
-                ).value.trim();
-
-
-            if (!name) {
-
-                alert(
-                    "Vul eerst je naam in."
-                );
-
-                return;
-            }
-
-
-            if (selectedStars === 0) {
-
-                alert(
-                    "Kies eerst het aantal sterren."
-                );
-
-                return;
-            }
-
-
-            if (!text) {
-
-                alert(
-                    "Schrijf eerst een review."
-                );
-
-                return;
-            }
-
-
-            const review = {
-
-                name: name,
-
-                stars: selectedStars,
-
-                text: text
-
-            };
-
-
-            let reviews =
-                JSON.parse(
-                    localStorage.getItem(
-                        "hondenReviews"
-                    )
-                ) || [];
-
-
-            reviews.push(review);
-
-
-            localStorage.setItem(
-                "hondenReviews",
-                JSON.stringify(reviews)
-            );
-
-
-            document.getElementById(
-                "reviewName"
-            ).value = "";
-
-
-            document.getElementById(
-                "reviewText"
-            ).value = "";
-
-
-            selectedStars = 0;
-
-
-            document
-                .querySelectorAll(".star")
-                .forEach(
-                    star =>
-                        star.classList.remove(
-                            "selected"
-                        )
-                );
-
-
-            loadReviews();
-
-
-            alert(
-                "Bedankt voor je review! ⭐"
-            );
-        }
-
-
-
-        function loadReviews() {
-
-            const reviews =
-                JSON.parse(
-                    localStorage.getItem(
-                        "hondenReviews"
-                    )
-                ) || [];
-
-
-            const list =
-                document.getElementById(
-                    "reviewsList"
-                );
-
-
-            list.innerHTML = "";
-
-
-            if (reviews.length === 0) {
-
-                list.innerHTML =
-                    "<p>Nog geen reviews. Wees de eerste! ⭐</p>";
-
-                return;
-            }
-
-
-            reviews.forEach(
-                review => {
-
-                    const reviewElement =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    reviewElement.className =
-                        "review";
-
-
-                    let stars = "";
-
-
-                    for (
-                        let i = 0;
-                        i < review.stars;
-                        i++
-                    ) {
-
-                        stars += "★";
-
-                    }
-
-
-                    reviewElement.innerHTML =
-
-                        '<div class="review-name">' +
-                        escapeHTML(review.name) +
-                        "</div>" +
-
-                        '<div class="review-stars">' +
-                        stars +
-                        "</div>" +
-
-                        "<p>" +
-                        escapeHTML(review.text) +
-                        "</p>";
-
-
-                    list.appendChild(
-                        reviewElement
-                    );
-
-                }
-            );
-        }
-
-
-
-        function toggleReviews() {
-
-            const container =
-                document.getElementById(
-                    "reviewsContainer"
-                );
-
-
-            if (
-                container.style.display ===
-                "none" ||
-                container.style.display === ""
-            ) {
-
-                loadReviews();
-
-                container.style.display =
-                    "block";
-
-            } else {
-
-                container.style.display =
-                    "none";
-
-            }
-        }
-
-
-
-        function escapeHTML(text) {
-
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-            div.textContent = text;
-
-            return div.innerHTML;
-        }
-
-
-
-        /* Reviews alvast laden */
-
-        loadReviews();
-
-    </script>
-
-</body>
-
-</html>
 ```
+
