@@ -127,7 +127,60 @@
         </div>
 
         <h2>📞 Contact</h2>
+<div class="form-box">
 
+    <h2>📝 Aanvraagformulier</h2>
+
+    <input type="text" id="naam" placeholder="Je naam" required>
+
+    <input type="text" id="hond" placeholder="Naam van je hond" required>
+
+    <input type="date" id="datum" required>
+
+    <select id="tijd" required>
+        <option value="">Kies een tijd</option>
+        <option value="16:00 - 17:00">16:00 - 17:00</option>
+        <option value="19:30 - 21:00">19:30 - 21:00</option>
+    </select>
+
+    <textarea id="bericht" placeholder="Extra informatie"></textarea>
+
+    <button type="button" onclick="sendWhatsApp()">
+        💬 Aanvraag via WhatsApp
+    </button>
+
+</div>
+
+<script>
+function sendWhatsApp() {
+
+    const naam = document.getElementById("naam").value;
+    const hond = document.getElementById("hond").value;
+    const datum = document.getElementById("datum").value;
+    const tijd = document.getElementById("tijd").value;
+    const bericht = document.getElementById("bericht").value;
+
+    if (!naam || !hond || !datum || !tijd) {
+        alert("Vul eerst alle verplichte velden in.");
+        return;
+    }
+
+    const telefoonnummer = "JOUW_WHATSAPP_0619853623";
+
+    const tekst =
+        "🐶 Nieuwe hondenuitlaat aanvraag%0A%0A" +
+        "👤 Naam: " + encodeURIComponent(naam) + "%0A" +
+        "🐕 Hond: " + encodeURIComponent(hond) + "%0A" +
+        "📅 Datum: " + encodeURIComponent(datum) + "%0A" +
+        "🕐 Tijd: " + encodeURIComponent(tijd) + "%0A" +
+        "📝 Extra informatie: " + encodeURIComponent(bericht);
+
+    window.open(
+        "https://wa.me/" + telefoonnummer + "?text=" + tekst,
+        "_blank"
+    );
+}
+</script>
         <p>
             Interesse of vragen?
         </p>
